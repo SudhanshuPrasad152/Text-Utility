@@ -44,6 +44,7 @@ export default function TextArea(props) {
 
   let style1 = {};
   let style2 = {};
+  let btnStyle = {};
   if (props.mode === "light") {
     style1 = {
       color: "black",
@@ -52,12 +53,24 @@ export default function TextArea(props) {
       backgroundColor: "white",
       color: "black",
     };
-  } else {
+  } else if (props.mode === "dark") {
     style1 = {
       color: "white",
     };
     style2 = {
       backgroundColor: "#201f22",
+      color: "white",
+    };
+  } else if (props.mode === "purple") {
+    style1 = {
+      color: "white",
+    };
+    style2 = {
+      backgroundColor: "#494D5F",
+      color: "white",
+    };
+    btnStyle = {
+      backgroundColor: "#845BB3",
       color: "white",
     };
   }
@@ -75,21 +88,39 @@ export default function TextArea(props) {
             value={text}
             onChange={handleOnChange}
           ></textarea>
-          <button className="btn btn-primary my-3" onClick={handleUpClick}>
+          <button
+            className={`btn btn${
+              props.mode === "purple" ? "" : "-primary"
+            } my-3`}
+            onClick={handleUpClick}
+            style={props.mode === "purple" ? btnStyle : null}
+          >
             Convert to uppercase
           </button>
           <button
-            className="btn btn-primary my-3 mx-3"
+            className={`btn btn${
+              props.mode === "purple" ? "" : "-primary"
+            } my-3 mx-3`}
             onClick={handleLowClick}
+            style={props.mode === "purple" ? btnStyle : null}
           >
             Convert to Lowercase
           </button>
-          <button className="btn btn-primary my-3" onClick={handleClrtxt}>
+          <button
+            className={`btn btn${
+              props.mode === "purple" ? "" : "-primary"
+            } my-3`}
+            onClick={handleClrtxt}
+            style={props.mode === "purple" ? btnStyle : null}
+          >
             Clear text
           </button>
           <button
-            className="btn btn-primary my-3 mx-3"
+            className={`btn btn${
+              props.mode === "purple" ? "" : "-primary"
+            } my-3 mx-3`}
             onClick={handleAltrcase}
+            style={props.mode === "purple" ? btnStyle : null}
           >
             Alternate case
           </button>
