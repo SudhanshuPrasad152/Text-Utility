@@ -72,7 +72,7 @@ function App() {
                 />
               }
             />
-            <Route exact path="/about" element={<AboutUs />} />
+            <Route exact path="/about" element={<AboutUs mode={mode} />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -14,9 +14,15 @@ export default function TextArea(props) {
 
   let words = 0;
   for (let i = 0; i < text.length; i++) {
-    if (text[i] === " ") words++;
+    if (text[i] === " " && text[i + 1] > " ") words++;
   }
-  if (!(text.length === 0)) words++;
+  let disable = true;
+  if (text.length > 0 && text[0] !== " ") words++;
+  if (words === 0) {
+    disable = true;
+  } else {
+    disable = false;
+  }
 
   const handleLowClick = () => {
     setText(text.toLowerCase());
@@ -89,36 +95,40 @@ export default function TextArea(props) {
             onChange={handleOnChange}
           ></textarea>
           <button
+            disabled={disable}
             className={`btn btn${
               props.mode === "purple" ? "" : "-primary"
-            } my-3`}
+            } my-1 mx-1`}
             onClick={handleUpClick}
             style={props.mode === "purple" ? btnStyle : null}
           >
             Convert to uppercase
           </button>
           <button
+            disabled={disable}
             className={`btn btn${
               props.mode === "purple" ? "" : "-primary"
-            } my-3 mx-3`}
+            } my-2 mx-2`}
             onClick={handleLowClick}
             style={props.mode === "purple" ? btnStyle : null}
           >
             Convert to Lowercase
           </button>
           <button
+            disabled={disable}
             className={`btn btn${
               props.mode === "purple" ? "" : "-primary"
-            } my-3`}
+            } my-2 mx-2`}
             onClick={handleClrtxt}
             style={props.mode === "purple" ? btnStyle : null}
           >
             Clear text
           </button>
           <button
+            disabled={disable}
             className={`btn btn${
               props.mode === "purple" ? "" : "-primary"
-            } my-3 mx-3`}
+            } my-2 mx-2`}
             onClick={handleAltrcase}
             style={props.mode === "purple" ? btnStyle : null}
           >
